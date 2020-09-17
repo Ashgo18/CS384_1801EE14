@@ -62,7 +62,7 @@ def power(num1, num2): #num1 ^ num2
 
 def printGP(a, r, n): 
     gp=[]
-    
+
     if(isinstance(a,(int,float)) and isinstance(r,(int,float)) and isinstance(n,(int,float))):
         n = int(n)
         if(n<0):
@@ -82,9 +82,22 @@ def printGP(a, r, n):
 # Python 3 program to print AP.  arithmetic Progression
 #You cant use the inbuilt python function. Write your own function
 
-def printAP(a, d, n): 
-	ap=[]
-	return ap
+def printAP(a, d, n):
+    ap=[]
+
+    if (isinstance(a,(int,float)) and isinstance(d,(int,float)) and isinstance(n,(int,float))):
+        n=int(n)
+        if(n<0):
+            return 0
+        if(n>1):
+            ap.append(a)
+
+        for x in range(1,n):
+            a+=d
+            ap.append(a)
+        return ap
+    else:
+        return 0    
 
 # Python 3 program to print HP.   Harmonic Progression
 #You cant use the inbuilt python function. Write your own function
