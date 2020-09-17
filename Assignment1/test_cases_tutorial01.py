@@ -1,6 +1,6 @@
 import tutorial01 as A1
 
-actual_answers = [9, 12, 28, 7 , 4 , 5 , 6 ,8 , 81 , 9 , 0 ,[2,6,18,54],0]
+actual_answers = [9, 12, 28, 7 , 4 , 5 , 6 ,8 , 81 , 9 , 0 ,[2,6,18,54],0,"error",0]
 student_answers = []
 
 test_case_1 = A1.add(4, 5)
@@ -41,6 +41,12 @@ student_answers.append(test_case_12)
 
 test_case_13 = A1.printAP(2,3,4)
 student_answers.append(test_case_13)
+
+test_case_14 = A1.printHP(1,1,4)
+student_answers.append(test_case_14)
+
+test_case_15 = A1.printHP(4,-1,6)
+student_answers.append(test_case_15)
 
 # print(test_case_12)
 print(actual_answers)
