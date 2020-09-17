@@ -1,6 +1,6 @@
 import tutorial01 as A1
 
-actual_answers = [9, 12, 28, 7 , 4 , 5 , 6 ,8]
+actual_answers = [9, 12, 28, 7 , 4 , 5 , 6 ,8 , 81 , 9 , 0]
 student_answers = []
 
 test_case_1 = A1.add(4, 5)
@@ -27,6 +27,14 @@ student_answers.append(test_case_7)
 test_case_8 = A1.divide(14, 0)
 student_answers.append(test_case_8)
 
+test_case_9 = A1.power(3, 4)
+student_answers.append(test_case_9)
+
+test_case_10 = A1.power(2, -4)
+student_answers.append(test_case_10)
+
+test_case_11 = A1.power("error", -4)
+student_answers.append(test_case_11)
 print(actual_answers)
 print(student_answers)
 

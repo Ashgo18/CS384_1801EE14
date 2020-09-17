@@ -45,8 +45,18 @@ def divide(num1, num2):
 
 def power(num1, num2): #num1 ^ num2
 	#DivisionLogic 
-	return power
-	
+    if (isinstance(num1,(int,float)) and isinstance(num2,(int,float))):
+        power=1
+        num2=int(num2)
+        for x in range(abs(num2)):
+            if(num2>=0):
+                power*=num1
+            else:
+                power/=num1
+        return round(power,3)
+    else:
+        return 0
+
 # Python 3 program to print GP.  geometric Progression
 #You cant use the inbuilt python function. Write your own function
 
