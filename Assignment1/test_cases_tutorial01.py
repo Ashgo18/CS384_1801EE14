@@ -1,6 +1,6 @@
 import tutorial01 as A1
 
-actual_answers = [9, 12, 28, 7]
+actual_answers = [9, 12, 28, 7 , 4 , 5 , 6 ,8]
 student_answers = []
 
 test_case_1 = A1.add(4, 5)
@@ -15,6 +15,18 @@ student_answers.append(test_case_3)
 test_case_4 = A1.divide(14, 2)
 student_answers.append(test_case_4)
 
+test_case_5 = A1.add(4, "error")
+student_answers.append(test_case_5)
+
+test_case_6 = A1.subtract("error", 2)
+student_answers.append(test_case_6)
+
+test_case_7 = A1.divide(0,0)
+student_answers.append(test_case_7)
+
+test_case_8 = A1.divide(14, 0)
+student_answers.append(test_case_8)
+
 print(actual_answers)
 print(student_answers)
 
@@ -25,5 +37,4 @@ for x, y in zip(actual_answers, student_answers):
     if x == y:
         count_of_correct_test_cases += 1
 
-print(
-    f"Test Cases Passed = '{count_of_correct_test_cases}'  / '{total_test_cases}'")
+print(f"Test Cases Passed = '{count_of_correct_test_cases}'  / '{total_test_cases}'")
