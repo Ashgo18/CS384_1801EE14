@@ -226,10 +226,28 @@ def skewness(first_list):
 #     return sorted_list
 
 
-# # Function to compute Kurtosis. You cant use Python functions
-# def kurtosis(first_list):
-#     # Kurtosis Logic
-#     return kurtosis_value
+# Function to compute Kurtosis. You cant use Python functions
+def kurtosis(first_list):
+    # Kurtosis Logic
+    list_size = len(first_list)
+    if(list_size==0):
+        return 0
+    for item in first_list:
+        if(not isinstance(item,(int,float))):
+            return 0
+    
+    mean_first_list = mean(first_list)
+    Standard_deviation_first_list = standard_deviation(first_list)
+    modified_list = [] #list with item values as 4th power of (item value of first list - mean of first list) by standard deviation of first list
+
+    for item in first_list:
+        modified_item = (item - mean_first_list)/Standard_deviation_first_list
+        modified_list.append(modified_item*modified_item*modified_item*modified_item)
+
+    modified_list_sum = summation(modified_list)
+    kurtosis_value = modified_list_sum/list_size
+    kurtosis_value = round(kurtosis_value,3)    
+    return kurtosis_value
 
 
 # Function to compute sum. You cant use Python functions
