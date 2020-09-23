@@ -198,10 +198,28 @@ def pcc(first_list, second_list):
     return pcc_value
 
 
-# # Function to compute Skewness. You cant use Python functions
-# def skewness(first_list):
-#     # Skewness Logic
-#     return skewness_value
+# Function to compute Skewness. You cant use Python functions
+def skewness(first_list):
+    # Skewness Logic
+    list_size = len(first_list)
+    if(list_size==0):
+        return 0
+    for item in first_list:
+        if(not isinstance(item,(int,float))):
+            return 0
+    
+    mean_first_list = mean(first_list)
+    Standard_deviation_first_list = standard_deviation(first_list)
+    modified_list = [] #list with item values as cube of (item value of first list - mean of first list) by standard deviation of first list
+
+    for item in first_list:
+        modified_item = (item - mean_first_list)/Standard_deviation_first_list
+        modified_list.append(modified_item*modified_item*modified_item)
+
+    modified_list_sum = summation(modified_list)
+    skewness_value = modified_list_sum/list_size
+    skewness_value = round(skewness_value,3)
+    return skewness_value
     
 # def sorting(first_list):
 #     # Sorting Logic
