@@ -19,6 +19,19 @@ def mean(first_list):
 # Function to compute median. You cant use Python functions
 # def median(first_list):
 #     # median Logic
+#     list_size = len(first_list)
+#     if(list_size==0):
+#         return 0
+#     for item in first_list:
+#         if(not isinstance(item,(int,float))):
+#             return 0
+    
+#     modified_list = sorting(first_list)
+#     index = list_size // 2
+#     if(list_size%2 == 1):
+#         median_value = round(modified_list[index],3)
+#     else:
+#         median_value = round((modified_list[index]+modified_list[index-1])/2,3)
 #     return median_value
 
 
@@ -221,9 +234,16 @@ def skewness(first_list):
     skewness_value = round(skewness_value,3)
     return skewness_value
     
-# def sorting(first_list):
-#     # Sorting Logic
-#     return sorted_list
+def sorting(first_list):
+    # Sorting Logic
+    sorted_list = first_list.copy()
+    list_size = len(first_list)
+    for i in range(0,list_size-1):
+        for j in range(i+1,list_size):
+            if(sorted_list[j]<sorted_list[i]):
+                sorted_list[i],sorted_list[j]=sorted_list[j],sorted_list[i]
+
+    return sorted_list
 
 
 # Function to compute Kurtosis. You cant use Python functions
