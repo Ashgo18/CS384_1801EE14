@@ -12,7 +12,7 @@ def mean(first_list):
             return 0
     total_sum = summation(first_list)
     mean_value = total_sum/list_size
-    mean_value = round(mean_value,3)
+    mean_value = round(mean_value,6)
     return mean_value
 
 
@@ -29,9 +29,9 @@ def median(first_list):
     modified_list = sorting(first_list)
     index = list_size // 2
     if(list_size%2 == 1):
-        median_value = round(modified_list[index],3)
+        median_value = round(modified_list[index],6)
     else:
-        median_value = round((modified_list[index]+modified_list[index-1])/2,3)
+        median_value = round((modified_list[index]+modified_list[index-1])/2,6)
     return median_value
 
 
@@ -53,7 +53,7 @@ def standard_deviation(first_list):
     
     modified_list_sum = summation(modified_list)
     standard_deviation_value = math.sqrt(modified_list_sum/list_size)
-    standard_deviation_value = round(standard_deviation_value,3)
+    standard_deviation_value = round(standard_deviation_value,6)
     return standard_deviation_value
 
 
@@ -75,7 +75,7 @@ def variance(first_list):
     
     modified_list_sum = summation(modified_list)
     variance_value = modified_list_sum/list_size
-    variance_value = round(variance_value,3)
+    variance_value = round(variance_value,6)
     return variance_value
 
 
@@ -100,7 +100,7 @@ def rmse(first_list, second_list):
     modified_list_sum = summation(modified_list)
     rmse_value = modified_list_sum/first_list_size
     rmse_value = math.sqrt(rmse_value)
-    rmse_value = round(rmse_value,3)    
+    rmse_value = round(rmse_value,6)    
     return rmse_value
 
 
@@ -124,7 +124,7 @@ def mse(first_list, second_list):
     
     modified_list_sum = summation(modified_list)
     mse_value = modified_list_sum/first_list_size
-    mse_value = round(mse_value,3)    
+    mse_value = round(mse_value,6)    
     return mse_value
 
 
@@ -148,7 +148,7 @@ def mae(first_list, second_list):
     
     modified_list_sum = summation(modified_list)
     mae_value = modified_list_sum/first_list_size
-    mae_value = round(mae_value,3)    
+    mae_value = round(mae_value,6)    
     return mae_value
 
 
@@ -174,7 +174,7 @@ def nse(first_list, second_list):
     
     modified_list_1_sum = summation(modified_list_1)
     modified_list_2_sum = summation(modified_list_2)
-    nse_value = round(1-modified_list_1_sum/modified_list_2_sum,3)    
+    nse_value = round(1-modified_list_1_sum/modified_list_2_sum,6)    
     return nse_value
 
 
@@ -207,7 +207,7 @@ def pcc(first_list, second_list):
     modified_list_3_sum = summation(modified_list_3)
     modified_product = math.sqrt(modified_list_2_sum)*math.sqrt(modified_list_3_sum)
     pcc_value = modified_list_1_sum/modified_product
-    pcc_value = round(pcc_value,3)    
+    pcc_value = round(pcc_value,6)    
     return pcc_value
 
 
@@ -231,7 +231,7 @@ def skewness(first_list):
 
     modified_list_sum = summation(modified_list)
     skewness_value = modified_list_sum/list_size
-    skewness_value = round(skewness_value,3)
+    skewness_value = round(skewness_value,6)
     return skewness_value
     
 def sorting(first_list):
@@ -266,7 +266,7 @@ def kurtosis(first_list):
 
     modified_list_sum = summation(modified_list)
     kurtosis_value = modified_list_sum/list_size
-    kurtosis_value = round(kurtosis_value,3)    
+    kurtosis_value = round(kurtosis_value,6)    
     return kurtosis_value
 
 
