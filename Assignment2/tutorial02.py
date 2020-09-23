@@ -139,16 +139,63 @@ def mae(first_list, second_list):
     return mae_value
 
 
-# # Function to compute NSE. You cant use Python functions
-# def nse(first_list, second_list):
-#     # nse Logic
-#     return nse_value
+# Function to compute NSE. You cant use Python functions
+def nse(first_list, second_list):
+    # nse Logic
+    first_list_size = len(first_list)
+    second_list_size = len(second_list)
+
+    if(first_list_size != second_list_size):
+        return 0
+    
+    for item1,item2 in zip(first_list,second_list):
+        if((not isinstance(item1,(int,float))) or (not isinstance(item2,(int,float)))):
+            return 0
+    
+    first_list_mean = mean(first_list)
+    modified_list_1 = [] #list with item values as square of (item value of first list - item value of second list)
+    modified_list_2 = [] #list with item values as square of (item value of first list - mean of first list)
+    for item1,item2 in zip(first_list,second_list):
+        modified_list_1.append((item1 - item2)*(item1 - item2))
+        modified_list_2.append((item1 - first_list_mean)*(item1 - first_list_mean))
+    
+    modified_list_1_sum = summation(modified_list_1)
+    modified_list_2_sum = summation(modified_list_2)
+    nse_value = round(1-modified_list_1_sum/modified_list_2_sum,3)    
+    return nse_value
 
 
-# # Function to compute Pearson correlation coefficient. You cant use Python functions
-# def pcc(first_list, second_list):
-#     # nse Logic
-#     return pcc_value
+# Function to compute Pearson correlation coefficient. You cant use Python functions
+def pcc(first_list, second_list):
+    # pcc Logic
+    first_list_size = len(first_list)
+    second_list_size = len(second_list)
+
+    if(first_list_size != second_list_size):
+        return 0
+    
+    for item1,item2 in zip(first_list,second_list):
+        if((not isinstance(item1,(int,float))) or (not isinstance(item2,(int,float)))):
+            return 0
+    
+    first_list_mean = mean(first_list)
+    second_list_mean = mean(second_list)
+    modified_list_1 = [] #list with item values as product of (item value of first list - mean of first list) and (item value of second list - mean of second list)
+    modified_list_2 = [] #list with item values as square of (item value of first list - mean of first list)
+    modified_list_3 = [] #list with item values as square of (item value of first list - mean of first list)
+
+    for item1,item2 in zip(first_list,second_list):
+        modified_list_1.append((item1 - first_list_mean)*(item2 - second_list_mean))
+        modified_list_2.append((item1 - first_list_mean)*(item1 - first_list_mean))
+        modified_list_3.append((item2 - second_list_mean)*(item2 - second_list_mean))
+    
+    modified_list_1_sum = summation(modified_list_1)
+    modified_list_2_sum = summation(modified_list_2)
+    modified_list_3_sum = summation(modified_list_3)
+    modified_product = math.sqrt(modified_list_2_sum)*math.sqrt(modified_list_3_sum)
+    pcc_value = modified_list_1_sum/modified_product
+    pcc_value = round(pcc_value,3)    
+    return pcc_value
 
 
 # # Function to compute Skewness. You cant use Python functions
