@@ -1,18 +1,4 @@
-import tutorial02 as A2
-
-actual_answers = [0.558, 0.641, 0.302, 0.091, -0.389, -1.003, 0.475, 0.226, 0.404, -1.108, 0.051, 0, 0, 0]
-student_answers = []
-
-import numpy as np
-
-x, y = np.loadtxt("results.csv", delimiter=",", usecols=(0, 1), unpack=True, skiprows=1)
-x = list(x)
-y = list(y)
-
-test_case_1 = A2.mean(x)
-student_answers.append(test_case_1)
-
-# test_case_2 = A2.median(x)
+dian(x)
 # student_answers.append(test_case_2)
 
 # test_case_3 = A2.standard_deviation(x)
@@ -53,16 +39,4 @@ student_answers.append(test_case_1)
 # student_answers.append(test_case_11)
 
 # test_case_12 = A2.rmse(p, r)  # Invalid since list  r contains non-numeric data-type e.g., string/character #Return 0
-# student_answers.append(test_case_12)
-
-print(actual_answers)
-print(student_answers)
-
-total_test_cases = len(actual_answers)
-count_of_correct_test_cases = 0
-
-for x, y in zip(actual_answers, student_answers):
-    if x == y:
-        count_of_correct_test_cases += 1
-
-print(f"Test Cases Passed = '{count_of_correct_test_cases}'  / '{total_test_cases}'")
+# student_answers.app
