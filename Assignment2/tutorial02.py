@@ -44,10 +44,26 @@ def standard_deviation(first_list):
     return standard_deviation_value
 
 
-# # Function to compute variance. You cant use Python functions
-# def variance(first_list):
-#     # variance Logic
-#     return variance_value
+# Function to compute variance. You cant use Python functions
+def variance(first_list):
+    # variance Logic
+    list_size = len(first_list)
+    if(list_size==0):
+        return 0
+    for item in first_list:
+        if(not isinstance(item,(int,float))):
+            return 0
+    
+    mean_first_list = mean(first_list)
+    modified_list = [] #list with item values as square of (item value of first list - mean of first list)
+
+    for item in first_list:
+        modified_list.append((item - mean_first_list)*(item - mean_first_list))
+    
+    modified_list_sum = summation(modified_list)
+    variance_value = modified_list_sum/list_size
+    variance_value = round(variance_value,3)
+    return variance_value
 
 
 # # Function to compute RMSE. You cant use Python functions

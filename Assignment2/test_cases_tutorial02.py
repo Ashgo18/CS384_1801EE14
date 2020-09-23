@@ -18,8 +18,8 @@ student_answers.append(test_case_1)
 test_case_3 = A2.standard_deviation(x)
 student_answers.append(test_case_3)
 
-# test_case_4 = A2.variance(x)
-# student_answers.append(test_case_4)
+test_case_4 = A2.variance(x)
+student_answers.append(test_case_4)
 
 # test_case_5 = A2.skewness(x)
 # student_answers.append(test_case_5)
