@@ -22,10 +22,26 @@ def mean(first_list):
 #     return median_value
 
 
-# # Function to compute Standard deviation. You cant use Python functions
-# def standard_deviation(first_list):
-#     # Standard deviation Logic
-#     return standard_deviation_value
+# Function to compute Standard deviation. You cant use Python functions
+def standard_deviation(first_list):
+    # Standard deviation Logic
+    list_size = len(first_list)
+    if(list_size==0):
+        return 0
+    for item in first_list:
+        if(not isinstance(item,(int,float))):
+            return 0
+    
+    mean_first_list = mean(first_list)
+    modified_list = [] #list with item values as square of (item value of first list - mean of first list)
+
+    for item in first_list:
+        modified_list.append((item - mean_first_list)*(item - mean_first_list))
+    
+    modified_list_sum = summation(modified_list)
+    standard_deviation_value = math.sqrt(modified_list_sum/list_size)
+    standard_deviation_value = round(standard_deviation_value,3)
+    return standard_deviation_value
 
 
 # # Function to compute variance. You cant use Python functions

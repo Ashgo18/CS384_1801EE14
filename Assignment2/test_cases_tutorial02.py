@@ -15,8 +15,8 @@ student_answers.append(test_case_1)
 # test_case_2 = A2.median(x)
 # student_answers.append(test_case_2)
 
-# test_case_3 = A2.standard_deviation(x)
-# student_answers.append(test_case_3)
+test_case_3 = A2.standard_deviation(x)
+student_answers.append(test_case_3)
 
 # test_case_4 = A2.variance(x)
 # student_answers.append(test_case_4)
