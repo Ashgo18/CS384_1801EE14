@@ -17,22 +17,22 @@ def mean(first_list):
 
 
 # Function to compute median. You cant use Python functions
-# def median(first_list):
-#     # median Logic
-#     list_size = len(first_list)
-#     if(list_size==0):
-#         return 0
-#     for item in first_list:
-#         if(not isinstance(item,(int,float))):
-#             return 0
+def median(first_list):
+    # median Logic
+    list_size = len(first_list)
+    if(list_size==0):
+        return 0
+    for item in first_list:
+        if(not isinstance(item,(int,float))):
+            return 0
     
-#     modified_list = sorting(first_list)
-#     index = list_size // 2
-#     if(list_size%2 == 1):
-#         median_value = round(modified_list[index],3)
-#     else:
-#         median_value = round((modified_list[index]+modified_list[index-1])/2,3)
-#     return median_value
+    modified_list = sorting(first_list)
+    index = list_size // 2
+    if(list_size%2 == 1):
+        median_value = round(modified_list[index],3)
+    else:
+        median_value = round((modified_list[index]+modified_list[index-1])/2,3)
+    return median_value
 
 
 # Function to compute Standard deviation. You cant use Python functions
