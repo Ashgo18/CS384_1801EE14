@@ -115,10 +115,28 @@ def mse(first_list, second_list):
     return mse_value
 
 
-# # Function to compute mae. You cant use Python functions
-# def mae(first_list, second_list):
-#     # mae Logic
-#     return mae_value
+# Function to compute mae. You cant use Python functions
+def mae(first_list, second_list):
+    # mae Logic
+    first_list_size = len(first_list)
+    second_list_size = len(second_list)
+
+    if(first_list_size != second_list_size):
+        return 0
+    
+    for item1,item2 in zip(first_list,second_list):
+        if((not isinstance(item1,(int,float))) or (not isinstance(item2,(int,float)))):
+            return 0
+    
+    modified_list = [] #list with item values as abs of (item value of first list - item value of second list)
+
+    for item1,item2 in zip(first_list,second_list):
+        modified_list.append(abs(item1 - item2))
+    
+    modified_list_sum = summation(modified_list)
+    mae_value = modified_list_sum/first_list_size
+    mae_value = round(mae_value,3)    
+    return mae_value
 
 
 # # Function to compute NSE. You cant use Python functions
