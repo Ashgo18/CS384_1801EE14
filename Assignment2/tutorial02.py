@@ -72,10 +72,28 @@ def variance(first_list):
 #     return rmse_value
 
 
-# # Function to compute mse. You cant use Python functions
-# def mse(first_list, second_list):
-#     # mse Logic
-#     return mse_value
+# Function to compute mse. You cant use Python functions
+def mse(first_list, second_list):
+    # mse Logic
+    first_list_size = len(first_list)
+    second_list_size = len(second_list)
+
+    if(first_list_size!=second_list_size):
+        return 0
+    
+    for item1,item2 in zip(first_list,second_list):
+        if((not isinstance(item1,(int,float))) or (not isinstance(item2,(int,float)))):
+            return 0
+    
+    modified_list = [] #list with item values as square of (item value of first list - item value of second list)
+
+    for item1,item2 in zip(first_list,second_list):
+        modified_list.append((item1 - item2)*(item1 - item2))
+    
+    modified_list_sum = summation(modified_list)
+    mse_value = modified_list_sum/first_list_size
+    mse_value = round(mse_value,3)    
+    return mse_value
 
 
 # # Function to compute mae. You cant use Python functions

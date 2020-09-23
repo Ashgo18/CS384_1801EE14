@@ -30,8 +30,8 @@ student_answers.append(test_case_4)
 # test_case_7 = A2.rmse(x, y)
 # student_answers.append(test_case_7)
 
-# test_case_8 = A2.mse(x, y)
-# student_answers.append(test_case_8)
+test_case_8 = A2.mse(x, y)
+student_answers.append(test_case_8)
 
 # test_case_9 = A2.mae(x, y)
 # student_answers.append(test_case_9)
