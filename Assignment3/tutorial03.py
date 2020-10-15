@@ -167,9 +167,34 @@ def dob():
 
 
 
-# def state():
-#     # Read csv and process
-#     pass
+def state():
+    # Read csv and process
+    cd = os.getcwd()  #Directory having studentinfo_cs384.csv file
+    with open('studentinfo_cs384.csv','r') as file:
+        student_data = csv.DictReader(file)
+    
+        header=['id','full_name','country','email','gender','dob','blood_group','state']
+    
+        cd+=r'\analytics'
+        if not os.path.isdir(cd):
+            os.mkdir(cd)
+        
+        cd+=r'\state'
+        if not os.path.isdir(cd):
+            os.mkdir(cd)
+
+        for row in student_data:
+            state = row['state']
+            info_file = cd + "\\" + state.lower() + ".csv"
+
+            if not os.path.isfile(info_file):
+                with open(info_file,'w',newline='') as file:
+                    data = csv.DictWriter(file,fieldnames=header)
+                    data.writeheader()
+                
+            with open(info_file,'a+',newline='') as file:
+                data = csv.DictWriter(file,fieldnames=header)
+                data.writerow(row)
 
 
 # def blood_group():
@@ -182,7 +207,8 @@ def dob():
 #     # Read csv and process
 #     pass
 
-# course()
-# dob()
-# gender()
-# country()
+course()
+dob()
+gender()
+country()
+state()
