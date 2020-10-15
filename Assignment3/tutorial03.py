@@ -76,9 +76,46 @@ def course():
 #     pass
 
 
-# def dob():
-#     # Read csv and process
-#     pass
+def dob():
+    # Read csv and process
+    cd = os.getcwd() #Directory having studentinfo_cs384.csv file
+    with open('studentinfo_cs384.csv','r') as file:
+        student_data = csv.DictReader(file)
+    
+        header=['id','full_name','country','email','gender','dob','blood_group','state']
+        
+        cd+=r'\analytics'
+        if not os.path.isdir(cd):
+            os.mkdir(cd)
+        
+        cd+=r'\dob'
+        if not os.path.isdir(cd):
+            os.mkdir(cd)
+
+        for row in student_data:
+            date_of_birth = row['dob']
+            birth_year = re.split('-',date_of_birth)[2]
+            
+            if birth_year>="1995" and birth_year<="1999":
+                info_file = cd + r'\bday_1995_1999.csv'
+            elif birth_year>="2000" and birth_year<="2004":
+                info_file = cd + r'\bday_2000_2004.csv'
+            elif birth_year>="2005" and birth_year<="2009":
+                info_file = cd + r'\bday_2005_2009.csv'
+            elif birth_year>="2010" and birth_year<="2014":
+                info_file = cd + r'\bday_2010_2014.csv'
+            elif birth_year>="2015" and birth_year<="2020":
+                info_file = cd + r'\bday_2015_2020.csv'
+
+            if not os.path.isfile(info_file):
+                with open(info_file,'w',newline='') as file:
+                    data = csv.DictWriter(file,fieldnames=header)
+                    data.writeheader()
+
+            with open(info_file,'a+',newline='') as file:
+                data = csv.DictWriter(file,fieldnames=header)
+                data.writerow(row)            
+
 
 
 # def state():
@@ -97,3 +134,4 @@ def course():
 #     pass
 
 # course()
+# dob()
