@@ -1,9 +1,18 @@
 import os
 import re
 import csv
+import shutil
 
 os.system("cls")
-print(os.getcwd())
+
+def del_create_analytics_folder():
+    # del the analytics folder including subfolder
+    # mkdir the analytics folder (only mkdir)
+    cd = os.getcwd()
+    cd = os.path.join(cd,'analytics')
+    if os.path.isdir(cd):
+        shutil.rmtree(cd)
+
 
 def course():
     # Read csv and process
@@ -113,8 +122,8 @@ def email_domain_extract():
 
         for row in student_data:
             email = re.split('@',row['email'])[1]
-            email_domain = re.split('\.',email)[0]
-            print(email_domain)
+            email_domain = re.split(r'\.',email)[0]
+            
             if email_domain == "":
                 email_domain = "misc"
             info_file = cd + "\\" + email_domain.lower() + r'.csv'
@@ -314,11 +323,11 @@ def new_file_sort():
                 
     
 
-# course()
-# dob()
-# gender()
-# country()
-# state()
-# blood_group()
-# email_domain_extract()
+course()
+dob()
+gender()
+country()
+state()
+blood_group()
+email_domain_extract()
 new_file_sort()
