@@ -25,11 +25,11 @@ def course():
         course_code={'01' : "btech",'11' : "mtech",'12' : "msc",'21' : "phd"}
         roll_number_re = re.compile(r'^[0-9]{2}[0-2]{2}[a-zA-Z]{2}[0-9]{2}$')    
     
-        cd+=r'\analytics'
+        cd = os.path.join(cd,'analytics')
         if not os.path.isdir(cd):
             os.mkdir(cd)
         
-        cd+=r'\course'
+        cd = os.path.join(cd,'course')
         if not os.path.isdir(cd):
             os.mkdir(cd)
 
@@ -46,15 +46,15 @@ def course():
                 branch = (roll_no[4:6]).lower()
                 
                 cd1=cd
-                cd1+="\\"+branch
+                cd1 = os.path.join(cd1,branch)
                 if not os.path.isdir(cd1):
                     os.mkdir(cd1)
             
-                cd1+="\\"+course
+                cd1 = os.path.join(cd1,course)
                 if not os.path.isdir(cd1):
                     os.mkdir(cd1)
 
-                info_file = cd1 + "\\" + year_of_admission + "_" + branch + "_" + course + ".csv"
+                info_file = os.path.join(cd1,year_of_admission + "_" + branch + "_" + course + ".csv")
 
                 if not os.path.isfile(info_file):
                     with open(info_file,'w',newline='') as file:
@@ -65,7 +65,7 @@ def course():
                     data = csv.DictWriter(file,fieldnames=header)
                     data.writerow(row)
 
-        cd+=r'\misc.csv'
+        cd = os.path.join(cd,'misc')
         with open(cd,'w',newline='') as file:
             data = csv.DictWriter(file,fieldnames=header)
             data.writeheader()
@@ -79,11 +79,11 @@ def country():
     
         header=['id','full_name','country','email','gender','dob','blood_group','state']
     
-        cd+=r'\analytics'
+        cd = os.path.join(cd,'analytics')
         if not os.path.isdir(cd):
             os.mkdir(cd)
         
-        cd+=r'\country'
+        cd = os.path.join(cd,'country')
         if not os.path.isdir(cd):
             os.mkdir(cd)
 
@@ -92,7 +92,7 @@ def country():
 
             if country == "":
                 country = "misc"
-            info_file = cd + "\\" + country.lower() + ".csv"
+            info_file = os.path.join(cd,country.lower() + ".csv")
 
             if not os.path.isfile(info_file):
                 with open(info_file,'w',newline='') as file:
@@ -112,21 +112,21 @@ def email_domain_extract():
     
         header=['id','full_name','country','email','gender','dob','blood_group','state']
         
-        cd+=r'\analytics'
+        cd = os.path.join(cd,'analytics')
         if not os.path.isdir(cd):
             os.mkdir(cd)
         
-        cd+=r'\email_domains'
+        cd = os.path.join(cd,'email_domains')
         if not os.path.isdir(cd):
             os.mkdir(cd)
 
         for row in student_data:
             email = re.split('@',row['email'])[1]
             email_domain = re.split(r'\.',email)[0]
-            
+
             if email_domain == "":
                 email_domain = "misc"
-            info_file = cd + "\\" + email_domain.lower() + r'.csv'
+            info_file = os.path.join(cd ,email_domain.lower() + ".csv")
 
             if not os.path.isfile(info_file):
                 with open(info_file,'w',newline='') as file:
@@ -146,11 +146,11 @@ def gender():
     
         header=['id','full_name','country','email','gender','dob','blood_group','state']
         
-        cd+=r'\analytics'
+        cd = os.path.join(cd,'analytics')
         if not os.path.isdir(cd):
             os.mkdir(cd)
         
-        cd+=r'\gender'
+        cd = os.path.join(cd,'gender')
         if not os.path.isdir(cd):
             os.mkdir(cd)
 
@@ -158,7 +158,7 @@ def gender():
             gender = row['gender']
             if gender == "":
                 gender ="misc"
-            info_file = cd + "\\" + gender.lower() + r'.csv'
+            info_file = os.path.join(cd ,gender.lower() + ".csv")
 
             if not os.path.isfile(info_file):
                 with open(info_file,'w',newline='') as file:
@@ -177,11 +177,11 @@ def dob():
     
         header=['id','full_name','country','email','gender','dob','blood_group','state']
         
-        cd+=r'\analytics'
+        cd = os.path.join(cd,'analytics')
         if not os.path.isdir(cd):
             os.mkdir(cd)
         
-        cd+=r'\dob'
+        cd = os.path.join(cd,'dob')
         if not os.path.isdir(cd):
             os.mkdir(cd)
 
@@ -190,17 +190,17 @@ def dob():
             birth_year = re.split('-',date_of_birth)[2]
             
             if birth_year>="1995" and birth_year<="1999":
-                info_file = cd + r'\bday_1995_1999.csv'
+                info_file = os.path.join(cd ,'bday_1995_1999.csv')
             elif birth_year>="2000" and birth_year<="2004":
-                info_file = cd + r'\bday_2000_2004.csv'
+                info_file = os.path.join(cd , 'bday_2000_2004.csv')
             elif birth_year>="2005" and birth_year<="2009":
-                info_file = cd + r'\bday_2005_2009.csv'
+                info_file = os.path.join(cd , 'bday_2005_2009.csv')
             elif birth_year>="2010" and birth_year<="2014":
-                info_file = cd + r'\bday_2010_2014.csv'
+                info_file = os.path.join(cd , 'bday_2010_2014.csv')
             elif birth_year>="2015" and birth_year<="2020":
-                info_file = cd + r'\bday_2015_2020.csv'
+                info_file = os.path.join(cd , 'bday_2015_2020.csv')
             else:
-                info_file = cd + r'\misc.csv'
+                info_file = os.path.join(cd , 'misc.csv')
 
             if not os.path.isfile(info_file):
                 with open(info_file,'w',newline='') as file:
@@ -221,11 +221,11 @@ def state():
     
         header=['id','full_name','country','email','gender','dob','blood_group','state']
     
-        cd+=r'\analytics'
+        cd = os.path.join(cd , 'analytics')
         if not os.path.isdir(cd):
             os.mkdir(cd)
         
-        cd+=r'\state'
+        cd = os.path.join(cd , 'state')
         if not os.path.isdir(cd):
             os.mkdir(cd)
 
@@ -233,7 +233,7 @@ def state():
             state = row['state']
             if state == "":
                 state = "misc"
-            info_file = cd + "\\" + state.lower() + ".csv"
+            info_file = os.path.join(cd ,state.lower() + ".csv")
 
             if not os.path.isfile(info_file):
                 with open(info_file,'w',newline='') as file:
@@ -253,11 +253,11 @@ def blood_group():
     
         header=['id','full_name','country','email','gender','dob','blood_group','state']
     
-        cd+=r'\analytics'
+        cd = os.path.join(cd , 'analytics')
         if not os.path.isdir(cd):
             os.mkdir(cd)
         
-        cd+=r'\blood_group'
+        cd = os.path.join(cd ,'blood_group')
         if not os.path.isdir(cd):
             os.mkdir(cd)
 
@@ -265,7 +265,7 @@ def blood_group():
             blood_group = row['blood_group']
             if blood_group == "":
                 blood_group = "misc"
-            info_file = cd + "\\" + blood_group.lower() + ".csv"
+            info_file = os.path.join(cd , blood_group.lower() + ".csv")
 
             if not os.path.isfile(info_file):
                 with open(info_file,'w',newline='') as file:
@@ -286,7 +286,7 @@ def new_file_sort():
     
         header=['id','first_name','last_name','country','email','gender','dob','blood_group','state']
     
-        cd+=r'\analytics'
+        cd = os.path.join(cd , 'analytics')
         if not os.path.isdir(cd):
             os.mkdir(cd)
 
@@ -299,7 +299,7 @@ def new_file_sort():
             new_row['last_name'] = last_name
             del new_row['full_name']
             
-            info_file = cd + "\\" + 'studentinfo_cs384_names_split.csv'
+            info_file = os.path.join(cd ,'studentinfo_cs384_names_split.csv')
 
             if not os.path.isfile(info_file):
                 with open(info_file,'w',newline='') as file:
@@ -310,7 +310,7 @@ def new_file_sort():
                 data = csv.DictWriter(file,fieldnames=header)
                 data.writerow(new_row)
 
-            sorted_file = cd + "\\" + 'studentinfo_cs384_names_split_sorted_first_name.csv'
+            sorted_file = os.path.join(cd , 'studentinfo_cs384_names_split_sorted_first_name.csv')
 
             sorted_list = []
             with open(info_file,'r',newline='') as file:
@@ -321,13 +321,3 @@ def new_file_sort():
                 data.writerow(header)
                 data.writerows(sorted_list[:-1])
                 
-    
-
-course()
-dob()
-gender()
-country()
-state()
-blood_group()
-email_domain_extract()
-new_file_sort()
