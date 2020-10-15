@@ -194,7 +194,7 @@ def state():
         for row in student_data:
             state = row['state']
             if state == "":
-                state = ""
+                state = "misc"
             info_file = cd + "\\" + state.lower() + ".csv"
 
             if not os.path.isfile(info_file):
@@ -207,9 +207,36 @@ def state():
                 data.writerow(row)
 
 
-# def blood_group():
-#     # Read csv and process
-#     pass
+def blood_group():
+    # Read csv and process
+    cd = os.getcwd()  #Directory having studentinfo_cs384.csv file
+    with open('studentinfo_cs384.csv','r') as file:
+        student_data = csv.DictReader(file)
+    
+        header=['id','full_name','country','email','gender','dob','blood_group','state']
+    
+        cd+=r'\analytics'
+        if not os.path.isdir(cd):
+            os.mkdir(cd)
+        
+        cd+=r'\blood_group'
+        if not os.path.isdir(cd):
+            os.mkdir(cd)
+
+        for row in student_data:
+            blood_group = row['blood_group']
+            if blood_group == "":
+                blood_group = "misc"
+            info_file = cd + "\\" + blood_group.lower() + ".csv"
+
+            if not os.path.isfile(info_file):
+                with open(info_file,'w',newline='') as file:
+                    data = csv.DictWriter(file,fieldnames=header)
+                    data.writeheader()
+                
+            with open(info_file,'a+',newline='') as file:
+                data = csv.DictWriter(file,fieldnames=header)
+                data.writerow(row)
 
 
 # # Create the new file here and also sort it in this function only.
@@ -222,3 +249,4 @@ def state():
 # gender()
 # country()
 # state()
+blood_group()
