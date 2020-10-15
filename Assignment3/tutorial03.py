@@ -120,6 +120,8 @@ def gender():
 
         for row in student_data:
             gender = row['gender']
+            if gender == "":
+                gender ="misc"
             info_file = cd + "\\" + gender.lower() + r'.csv'
 
             if not os.path.isfile(info_file):
@@ -191,6 +193,8 @@ def state():
 
         for row in student_data:
             state = row['state']
+            if state == "":
+                state = ""
             info_file = cd + "\\" + state.lower() + ".csv"
 
             if not os.path.isfile(info_file):
