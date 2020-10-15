@@ -32,6 +32,9 @@ def course():
                 miscc.append(row)
             else:
                 year_of_admission = roll_no[0:2]
+                if course_code.get(roll_no[2:4]) == None:
+                    miscc.append(row)
+                    continue
                 course = course_code[roll_no[2:4]]
                 branch = (roll_no[4:6]).lower()
                 
@@ -44,7 +47,7 @@ def course():
                 if not os.path.isdir(cd1):
                     os.mkdir(cd1)
 
-                info_file = cd1 + "\\" + year_of_admission + '' + branch + '' + course + ".csv"
+                info_file = cd1 + "\\" + year_of_admission + "_" + branch + "_" + course + ".csv"
 
                 if not os.path.isfile(info_file):
                     with open(info_file,'w',newline='') as file:
@@ -208,7 +211,7 @@ def state():
 #     pass
 
 course()
-dob()
-gender()
-country()
-state()
+# dob()
+# gender()
+# country()
+# state()
