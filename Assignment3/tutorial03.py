@@ -269,9 +269,50 @@ def blood_group():
 
 
 # # Create the new file here and also sort it in this function only.
-# def new_file_sort():
+def new_file_sort():
     # Read csv and process
-    # pass
+    cd = os.getcwd()  #Directory having studentinfo_cs384.csv file
+    with open('studentinfo_cs384.csv','r') as file:
+        student_data = csv.DictReader(file)
+    
+        header=['id','first_name','last_name','country','email','gender','dob','blood_group','state']
+    
+        cd+=r'\analytics'
+        if not os.path.isdir(cd):
+            os.mkdir(cd)
+
+        for row in student_data:
+            full_name = re.split(' ',row['full_name'],maxsplit=1)
+            first_name = full_name[0]
+            last_name = full_name[1]
+            new_row = row.copy()
+            new_row['first_name'] = first_name
+            new_row['last_name'] = last_name
+            del new_row['full_name']
+            
+            info_file = cd + "\\" + 'studentinfo_cs384_names_split.csv'
+
+            if not os.path.isfile(info_file):
+                with open(info_file,'w',newline='') as file:
+                    data = csv.DictWriter(file,fieldnames=header)
+                    data.writeheader()
+                
+            with open(info_file,'a+',newline='') as file:
+                data = csv.DictWriter(file,fieldnames=header)
+                data.writerow(new_row)
+
+            sorted_file = cd + "\\" + 'studentinfo_cs384_names_split_sorted_first_name.csv'
+
+            sorted_list = []
+            with open(info_file,'r',newline='') as file:
+                data = csv.reader(file)
+                sorted_list = sorted(data, key=lambda row: row[1])
+            with open(sorted_file,'w',newline='') as file:
+                data = csv.writer(file)
+                data.writerow(header)
+                data.writerows(sorted_list[:-1])
+                
+    
 
 # course()
 # dob()
@@ -279,4 +320,5 @@ def blood_group():
 # country()
 # state()
 # blood_group()
-email_domain_extract()
+# email_domain_extract()
+new_file_sort()
