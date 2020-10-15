@@ -82,6 +82,9 @@ def country():
 
         for row in student_data:
             country = row['country']
+
+            if country == "":
+                country = "misc"
             info_file = cd + "\\" + country.lower() + ".csv"
 
             if not os.path.isfile(info_file):
@@ -210,7 +213,7 @@ def state():
 #     # Read csv and process
 #     pass
 
-course()
+# course()
 # dob()
 # gender()
 # country()
