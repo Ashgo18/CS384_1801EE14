@@ -3,8 +3,6 @@ import re
 import csv
 
 os.system("cls")
-# with open("studentinfo_cs384.csv",'r') as file:
-
 print(os.getcwd())
 
 def course():
@@ -97,9 +95,38 @@ def country():
                 data.writerow(row)
 
 
-# def email_domain_extract():
-#     # Read csv and process
-#     pass
+def email_domain_extract():
+    # Read csv and process
+    cd = os.getcwd() #Directory having studentinfo_cs384.csv file
+    with open('studentinfo_cs384.csv','r') as file:
+        student_data = csv.DictReader(file)
+    
+        header=['id','full_name','country','email','gender','dob','blood_group','state']
+        
+        cd+=r'\analytics'
+        if not os.path.isdir(cd):
+            os.mkdir(cd)
+        
+        cd+=r'\email_domains'
+        if not os.path.isdir(cd):
+            os.mkdir(cd)
+
+        for row in student_data:
+            email = re.split('@',row['email'])[1]
+            email_domain = re.split('\.',email)[0]
+            print(email_domain)
+            if email_domain == "":
+                email_domain = "misc"
+            info_file = cd + "\\" + email_domain.lower() + r'.csv'
+
+            if not os.path.isfile(info_file):
+                with open(info_file,'w',newline='') as file:
+                    data = csv.DictWriter(file,fieldnames=header)
+                    data.writeheader()
+
+            with open(info_file,'a+',newline='') as file:
+                data = csv.DictWriter(file,fieldnames=header)
+                data.writerow(row)
 
 
 def gender():
@@ -163,6 +190,8 @@ def dob():
                 info_file = cd + r'\bday_2010_2014.csv'
             elif birth_year>="2015" and birth_year<="2020":
                 info_file = cd + r'\bday_2015_2020.csv'
+            else:
+                info_file = cd + r'\misc.csv'
 
             if not os.path.isfile(info_file):
                 with open(info_file,'w',newline='') as file:
@@ -241,12 +270,13 @@ def blood_group():
 
 # # Create the new file here and also sort it in this function only.
 # def new_file_sort():
-#     # Read csv and process
-#     pass
+    # Read csv and process
+    # pass
 
 # course()
 # dob()
 # gender()
 # country()
 # state()
-blood_group()
+# blood_group()
+email_domain_extract()
