@@ -4,7 +4,6 @@ import csv
 import shutil
 
 os.system("cls")
-
 def del_create_analytics_folder():
     # del the analytics folder including subfolder
     # mkdir the analytics folder (only mkdir)
