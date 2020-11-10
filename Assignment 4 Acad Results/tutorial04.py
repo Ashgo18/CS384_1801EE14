@@ -47,5 +47,10 @@ with open('acad_res_stud_grades.csv','r') as file:
                 data = csv.writer(file)
                 data.writerow([course,course_credit,sub_typ,grade_obtained,sem_no])
 
-    
+    if len(misc) != 0:
+        info_file = os.path.join(cd,'misc.csv')
+        with open(info_file,'w',newline='') as file:
+            data = csv.DictWriter(file,fieldnames=header_misc)
+            data.writeheader()
+            data.writerows(misc)    
 
