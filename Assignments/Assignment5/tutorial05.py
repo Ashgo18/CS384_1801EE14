@@ -74,8 +74,31 @@ def rename_Sherlock(folder_name):
             os.remove(file)
     
 
-# def rename_Suits(folder_name):
-#     # rename Logic 
+def rename_Suits(folder_name):
+    cwd = os.getcwd()
+    cwd = os.path.join(cwd ,'Subtitles')
+    cwd = os.path.join(cwd, folder_name[0])
+    files = list(os.listdir(cwd))
+    os.chdir(cwd)
+
+    for file in files:
+        try:
+            detail = re.split('-',file)
+            temp = detail[1]
+            ep = re.split('x',temp)[1].strip()
+            season = re.split('x',temp)[0].strip()
+            ep_name = re.split(r'\.',detail[2])[0].strip()
+            
+            while len(ep) < folder_name[2]:
+                ep = '0' + ep
+            while len(season) < folder_name[1]:
+                season = '0' + season
+
+            file_ext = re.split(r'\.',file)[-1].strip()
+            os.rename(file,folder_name[0] +' - '+' Season '+ season + ' Episode ' + ep + '- ' + ep_name + '.' + file_ext)
+
+        except:
+            os.remove(file)
     
 
 # def rename_How_I_Met_Your_Mother(folder_name):
