@@ -44,13 +44,34 @@ def rename_Game_of_Thrones(folder_name):
                 season = '0' + season
 
             file_ext = re.split(r'\.',file)[-1].strip()
-            os.rename(file,'Game of Thrones- Season '+ season + ' Episode ' + ep + '- ' + ep_name + '.' + file_ext)
+            os.rename(file,folder_name[0] +' - '+' Season '+ season + ' Episode ' + ep + '- ' + ep_name + '.' + file_ext)
 
         except:
             os.remove(file)
 
-# def rename_Sherlock(folder_name):
-#     # rename Logic 
+def rename_Sherlock(folder_name):
+    cwd = os.getcwd()
+    cwd = os.path.join(cwd ,'Subtitles')
+    cwd = os.path.join(cwd, folder_name[0])
+    files = list(os.listdir(cwd))
+    os.chdir(cwd)
+
+    for file in files:
+        try:
+            detail = re.findall(r'\d+', file)
+            ep = detail[1].strip()
+            season = detail[0].strip()
+            
+            while len(ep) < folder_name[2]:
+                ep = '0' + ep
+            while len(season) < folder_name[1]:
+                season = '0' + season
+
+            file_ext = re.split(r'\.',file)[-1].strip()
+            os.rename(file,folder_name[0] +' - '+' Season '+ season + ' Episode ' + ep + '.' + file_ext)
+
+        except:
+            os.remove(file)
     
 
 # def rename_Suits(folder_name):
