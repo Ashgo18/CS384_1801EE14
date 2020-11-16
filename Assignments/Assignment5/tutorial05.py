@@ -2,8 +2,25 @@ import os
 import re
 os.system('cls')
 
-# def rename_FIR(folder_name):
-    # rename Logic 
+def rename_FIR(folder_name):
+    cwd = os.getcwd()
+    cwd = os.path.join(cwd ,'Subtitles')
+    cwd = os.path.join(cwd, folder_name[0])
+    files = list(os.listdir(cwd))
+    os.chdir(cwd)
+
+    for file in files:
+        try:
+            detail = re.findall(r'\d+', file)
+            episode_no = detail[0].strip()
+
+            while(len(episode_no) < folder_name[2]):
+                episode_no = '0' + episode_no
+
+            file_ext = re.split(r'\.', file)[-1].strip()
+            os.rename(file, folder_name[0] + ' - '+ ' Episode '+ episode_no + '.' + file_ext )
+        except:
+            os.remove(file) 
     
 
 # def rename_Game_of_Thrones(folder_name):
