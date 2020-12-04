@@ -1,0 +1,11 @@
+ques_no,question,option1,option2,option3,option4,correct_option,marks_correct_ans,marks_wrong_ans,compulsory,time
+1,What is the capital of Old Japan,Tokyo,Kyoto,Nara,Kolkata,3,5,-1,y,20
+2,8+6,16,15,14,12,3,4,-1,y,
+3,Kakashi Hatake was titled as hokage after how many people,6,5,3,2,2,4,-1,n,
+4,Which of these is a library used for arrays,Tkinter,Pandas,Numpy,Librosa,3,8,-2,y,
+5,Who is the writer of the famous book '5 point someone',J.K. Rowling,Chetan Bhagat,Osamu Dazai,Merit Mckiney,2,8,-2,y,
+6,Which of these will be having a comeback in Janaury 2021,Black Clover,The Promised Neverland,Bleach,Tokyo Ghoul,3,6,-2,y,
+7,One Eyed Owl' is nickname of which anime character,Naruto Uzumaki,Izuku Midoria,Ken Kaneki,Norman,3,4,-1,n,
+8,On which of the following is the most famous work of 'H.G. Well',The song of ice and fire,Time Riders,The time Machine,The Children of blood and bone,3,6,-2,n,
+9,Largest Millitary budget is of which country,India,China,Japan,USA,4,8,-2,y,
+10,Lowest GDP is of which of the following,Bhutan,Bangladesh,Germany,India,4,4,-1,n,

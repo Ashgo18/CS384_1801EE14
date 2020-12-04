@@ -1,0 +1,11 @@
+ques_no,question,option1,option2,option3,option4,correct_option,marks_correct_ans,marks_wrong_ans,compulsory,time
+1, What is the capital of Japan?, Tokyo ,Kyoto ,Nara, Kolkata ,1,5,-1, y,20
+2,8+8,16,15,14,12,1,4,-1,y,
+3, Minato Namikaze was titled as hokage after how many people?,4,5,3,2,3,4,-1, n ,
+4,Which of these is a library used for signal processing,Tkinter,Pandas,Numpy,Librosa,4,8,-2,y,
+5,Who is the writer of the famous book 'Harry Potter',J.K. Rowling,Chetan Bhagat,Osamu Dazai,Merit Mckiney,1,8,-2,y,
+6,Which of these will be having a season 2 in Janaury,Black Clover,The Promised Neverland,Bleach,Tokyo Ghoul,2,6,-2,y,
+7,Deku' is nickname of which anime character,Naruto Uzumaki,Izuku Midoria,Ken Kaneki,Norman,2,4,-1,n,
+8,On which of the following the famous tv series 'Game of Thrones' is based on,The song of ice and fire,Time Riders,The time Machine,The Children of blood and bone,1,6,-2,n,
+9,Anime are native to which country,India,China,Japan,USA,3,8,-2,y,
+10,Nazis were from which country,Bhutan,Bangladesh,Germany,India,3,4,-1,n,
