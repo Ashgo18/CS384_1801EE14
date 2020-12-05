@@ -141,7 +141,7 @@ def time_destroy():
 
 
 def time_display(alloted_time):
-    global question_label, next_button, prev_button, submit_button, time_label, time_destroyer
+    global question_label, next_button, prev_button, submit_button, time_label, time_destroyer, marks_label
     # if alloted_time == -20:
     #     time_label.destroy()
     #     return
@@ -172,6 +172,7 @@ def time_display(alloted_time):
         time_label.destroy()
         question_label.destroy()
         submit_button.destroy()
+        marks_label.destroy()
         final_display()
 
 
@@ -209,16 +210,25 @@ def question_display(alloted_time, n, ch):
                 alloted_time = 60*int(alloted_time)
                 global time_label
                 time_label = Label(root)
-                time_label.place(relx=0.8, rely=0.2, anchor=CENTER)
+                time_label.place(relx=0.8, rely=0.1, anchor=CENTER)
                 time_display(alloted_time)
-            global question_label, next_button, prev_button, submit_button, button_list
+            global question_label, next_button, prev_button, submit_button, button_list, marks_label
+            unanswered = 0
+            for i in answers:
+                if i == 0 or i == '0':
+                    unanswered += 1
             # for i in range(len(df)):
             question_label = Label(root)
-            question_label.place(relx=0.1, rely=0.3, anchor=W)
-            question_label['text'] = f"{df['ques_no'][n]}. {df['question'][int(df['ques_no'][n])-1]} [Compulsory : {df['compulsory'][n]}]"
+            marks_label = Label(
+                root, text=f"Compulsory : {df['compulsory'][n]}\nMarks: ({df['marks_correct_ans'][n]}/{df['marks_wrong_ans'][n]})\nUnanswered questions - {unanswered}")
+            marks_label.place(relx=0.4, rely=0.28, anchor=E)
+
+            question_label.place(relx=0.1, rely=0.2, anchor=W)
+            question_label['text'] = f"{df['ques_no'][n]}. {df['question'][int(df['ques_no'][n])-1]}"
             response = StringVar()
             k = 0.4
             button_list = []
+
             option = ['1', '2', '3', '4']
             for i in range(5):
                 if i < 4:
@@ -258,6 +268,7 @@ def question_display(alloted_time, n, ch):
             question_display(alloted_time, n, 1)
     elif question_submitter == 1:
         next_button.destroy()
+        marks_label.destroy()
         prev_button.destroy()
         submit_button.destroy()
         question_label.destroy()
@@ -305,7 +316,7 @@ def quiz_select(record):
     quiz_path = os.path.join(os.getcwd(), 'quiz_wise_questions')
     i = 1
     lst = {}
-    response = StringVar()
+    response = StringVar(value='1')
     for file in os.listdir(quiz_path):
         q = 'quiz_'+str(i)
         lst[q] = file
